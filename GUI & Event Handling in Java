@@ -1,0 +1,77 @@
+/* THIS PROGRAM IS CREATED BY USAMA NADEEM
+    BS.I.T STUDENT OF GOVERNMENT ISLAMIA COLLEGE CIVIL LINES LAHORE
+    DATE OF CREATION IS 27-SEPTEMBER-2020
+    DAY OF CREATION IS SUNDAY
+ */
+//IMPORTING SOME IMPORTANT PACKAGES TO BE USED
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class MainNhiBtaoGa implements ActionListener{
+    //SOME GUI COMPONENTS ARE DECLARED TO BE USED
+    JFrame frame;
+    Container container;
+    JButton addButton;
+    JTextField value1;
+    JTextField value2;
+    JLabel labelShowAnswer;
+    JTextField answer;
+    //constructor workd
+    public MainNhiBtaoGa(){
+        GUIinit();
+    }
+    //this will tell you the guiwork
+    void GUIinit(){
+        frame = new JFrame();
+        container = frame.getContentPane();
+        container.setLayout(new FlowLayout());
+
+        addButton = new JButton("ADD");
+
+        value1 = new JTextField(15);
+        value2 = new JTextField(15);
+
+        labelShowAnswer = new JLabel("Showing You The Answer Below!");
+        answer = new JTextField("Waiting For A Click On ADD");
+
+        container.add(value1);
+        container.add(value2);
+        addButton.addActionListener(this);
+        container.add(addButton);
+        container.add(labelShowAnswer);
+
+        container.add(answer);
+
+        frame.setSize(235, 200);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        String val1, val2;
+        int valInt1, valInt2;
+        boolean flag = true;
+
+        if (ae.getSource() == addButton) {
+            {
+                try {
+                    val1 = value1.getText();
+                    val2 = value2.getText();
+
+                    valInt1 = Integer.parseInt(val1);
+                    valInt2 = Integer.parseInt(val2);
+                    valInt1 += valInt2;
+
+                    answer.setText("Main Nhi Btao Gaa!");
+                    flag = false;
+                } catch (NumberFormatException n) {
+                    JOptionPane.showMessageDialog(null, "Please Enter Valid Integers!");
+                }
+            }
+        }
+    }
+    //MAIN FUNCTION IS HERE MAI JAAN
+    public static void main(String[] args){
+        MainNhiBtaoGa obj = new MainNhiBtaoGa();
+    }
+}
